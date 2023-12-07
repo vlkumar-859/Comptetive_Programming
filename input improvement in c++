@@ -1,0 +1,9 @@
+add these two lines to improve input and output performances.
+
+`` 
+ios_base::sync_with_stdio(false);
+cin.tie(NULL); 
+``
+
+1. 1st line is used to remove the C++ dependency on C basic standard input functions such as 'stdin, stdout, stderr'.
+2. 2nd line is used to remove the calling of cout which is by default called when cin is initiated.
