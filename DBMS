@@ -1,0 +1,46 @@
+## Functional Dependency
+
+A **functional dependency** (FD) is a relationship between two attributes, typically in a relational database. If attribute Y is functionally dependent on attribute X (denoted as X → Y), it means that for each unique value of X, there is precisely one corresponding value of Y. In other words, X uniquely determines Y.
+
+### Example of Functional Dependency
+Consider a table `Students` with attributes `StudentID`, `StudentName`, and `DOB` (Date of Birth).
+
+- `StudentID → StudentName`: This means that for each unique `StudentID`, there is a specific `StudentName`. If you know the `StudentID`, you can uniquely determine the `StudentName`.
+- `StudentID → DOB`: This means that for each unique `StudentID`, there is a specific `DOB`. If you know the `StudentID`, you can uniquely determine the `DOB`.
+
+## Transitive Dependency
+
+A **transitive dependency** occurs when a non-prime attribute is dependent on another non-prime attribute, which is itself dependent on the primary key. This type of dependency indicates an indirect relationship between attributes.
+
+### Example of Transitive Dependency
+Consider a table `Employees` with attributes `EmpID`, `DeptID`, and `DeptName`.
+
+- `EmpID → DeptID`: Each employee is assigned to a specific department.
+- `DeptID → DeptName`: Each department ID corresponds to a department name.
+
+Thus, `EmpID → DeptName` is a transitive dependency because `EmpID` determines `DeptID`, and `DeptID` determines `DeptName`.
+
+## Key Differences
+
+1. **Direct vs. Indirect Dependency**:
+   - **Functional Dependency**: Direct relationship between attributes.
+     - Example: `StudentID → StudentName`
+   - **Transitive Dependency**: Indirect relationship through another attribute.
+     - Example: `EmpID → DeptName` (via `DeptID`)
+
+2. **Normalization Impact**:
+   - **Functional Dependency**: Helps in identifying candidate keys and primary keys.
+   - **Transitive Dependency**: Indicates that a table is not in Third Normal Form (3NF). Removing transitive dependencies is crucial for achieving 3NF.
+
+3. **Attribute Types**:
+   - **Functional Dependency**: Involves any type of attribute.
+   - **Transitive Dependency**: Involves non-prime attributes (attributes that are not part of any candidate key).
+
+## Summary
+
+- **Functional Dependency**: X → Y means X uniquely determines Y directly.
+  - Example: `StudentID → StudentName`
+- **Transitive Dependency**: X → Y through Z means X determines Y indirectly through Z.
+  - Example: `EmpID → DeptName` (via `DeptID`)
+
+Understanding these dependencies is essential for database normalization, ensuring data integrity and reducing redundancy.
